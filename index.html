@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Surya Namaskar Entry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,64 +13,81 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
-    form {
-      background: white;
-      padding: 25px;
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      width: 350px;
       border-radius: 10px;
-      width: 320px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
-    input, button {
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
-      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
     }
+
     button {
+      width: 100%;
+      padding: 10px;
       background: #2e7d32;
-      color: white;
+      color: #fff;
       border: none;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
+
     button:hover {
       background: #1b5e20;
     }
   </style>
 </head>
+
 <body>
 
-<form id="entryForm">
-  <h2>Surya Namaskar</h2>
+  <div class="card">
+    <h2>Surya Namaskar</h2>
 
-  <input type="text" id="name" placeholder="Name" required>
-  <input type="text" id="rollno" placeholder="Roll Number" required>
-  <input type="number" id="count" placeholder="No. of Surya Namaskar" required>
+    <form id="entryForm">
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="text" id="rollno" placeholder="Roll Number" required />
+      <input type="number" id="count" placeholder="No. of Surya Namaskar" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-  <button type="submit">Submit</button>
-</form>
+  <script>
+    document.getElementById("entryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-<script>
-document.getElementById("entryForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+      fetch(script.google.com/macros/s/AKfycbx4fnsQX1KxqJ4uEG1SEue4JW4yUUK4BpY6ESzkNGsNAVjq_plkh0OLP-O4CrdaHfGJmQ/exec, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          rollno: document.getElementById("rollno").value,
+          count: document.getElementById("count").value
+        })
+      });
 
-  fetch(https://script.google.com/macros/s/AKfycbyRu_BHxx3JYWCQ0crSolEJp-HrDp-cL3ikv6RrBXgf_w9wfmpYxXF-FU4FU-jQqBvumQ/exec, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      rollno: document.getElementById("rollno").value,
-      count: document.getElementById("count").value
-    })
-  });
-
-  alert("Data submitted successfully");
-  this.reset();
-});
-</script>
+      alert("Submitted Successfully");
+      this.reset();
+    });
+  </script>
 
 </body>
 </html>
